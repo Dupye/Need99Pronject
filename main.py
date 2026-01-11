@@ -25,13 +25,17 @@ def send_to_discord():
         "content": content
     })
 
-@app.route('/verify_udid', methods=['POST', 'GET'])
-def verify_udid():
-    send_to_discord()
+@app.route("/active_udid", methods=["GET", "POST"])
+def active_udid():
+    data = collect_request_data()
+    send_to_discord("ACTIVE_UDID", data)
+
     return jsonify({
         "status": "success",
-        "message": "UDID verificado com sucesso!"
+        "activated": True,
+        "message": "Cracked by Dupp 🤪"
     })
+
 
 @app.route('/verify_udid', methods=['POST'])
 def verify_udid():
