@@ -33,12 +33,16 @@ def verify_udid():
         "message": "UDID verificado com sucesso!"
     })
 
-@app.route('/active_udid', methods=['POST', 'GET'])
-def active_udid():
-    send_to_discord()
+@app.route('/verify_udid', methods=['POST'])
+def verify_udid():
+    data = request.get_json(force=True)
+
     return jsonify({
         "status": "success",
-        "message": "UDID ativado com sucesso!"
+        "valid": True,
+        "active": True,
+        "autowin": True,
+        "client": data
     })
 
 if __name__ == "__main__":
