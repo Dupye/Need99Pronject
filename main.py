@@ -1,7 +1,6 @@
 # app.py
-import os
-os.system('pip install flask')
 from flask import Flask, request, jsonify
+import os
 
 app = Flask(__name__)
 
@@ -22,5 +21,6 @@ def active_udid():
     })
 
 if __name__ == "__main__":
-    app.run()
-    
+    # Render define a porta via variável de ambiente PORT
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
